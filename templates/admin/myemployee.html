@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+
+
+{% block content %}
+
+<!-- heading & line -->
+    <center><h3 class=" display-3 p-5"><b>EMPLOYEES</b></h3></center>
+    <center><div class="mx-4 pb-2 mb-4 w-75 me-4  border-bottom border-danger border-1"></center>
+
+
+
+<div class="container mt-4 p-5">
+    <div class="row">
+        {% for employee in employees %}
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card shadow bg-primary bg-opacity-10">
+                <img src="/static/img/admin/user1.png" class="card-img-top p-5" alt="Employee Image">
+                <div class="card-body">
+                    <h3 class="card-title text-center">{{ employee.empname }}</h3>
+                    <p class="card-text text-center text-danger">{{ employee.empdesignation }}</p>
+                    <center>
+                        <div class="mx-4 pb-2 mb-4 w-50 me-4 text-danger border-bottom border-secondary border-1">
+                        </div>
+                        <a href="#" class="btn btn-dark">View More</a>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}

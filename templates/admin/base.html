@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="Icon" type="image/x-icon" href="/static/img/admin/logo.png">
+    <title>Livewire Nagpur</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/styles.css' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <style>
+    .card-container {
+      background-image: url(/static/img/admin/backgroundform.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
+
+  </head>
+  <body>
+
+  <!-- nav1 -->
+  <nav class="navbar  background-color: #e3f2fd">
+    <div class="container-fluid">
+      <div>
+        <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+          aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="container ">
+        <a class="navbar-brand" href="#">
+          <img src="/static/img/admin/livewirelogoimpp.png" alt="Bootstrap" width="180px" height="30px">
+        </a>
+
+      </div>
+      <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h6 class="text-dark">....</h6>
+          <button type="button" class="btn-close btn-close-white justify-content-end" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="mx-3">
+          <center>
+            <img src="/static/img/admin/user (1).png" alt="Bootstrap" class="justify-content-center" width="100px" height="100px">
+            <h1 class="text-white">{{admin_name}}</h1>
+        </center>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link text-white" aria-current="page" href="{% url 'admin_home' admin_name=admin_name %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'Register_admin' admin_name=admin_name %}">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'employee' admin_name=admin_name %}">View Employee</a>
+            </li>
+          </ul>
+        </div>
+        <div class="offcanvas-footer">
+          <a class="nav-link text-white p-3" href="">
+            Sign Out
+            <img src="/static/img/admin/power.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+        <div class="content h-100">
+        {% block content %}
+
+          {% endblock %}
+    </div>
+
+
+<!--  footer   -->
+     <footer class="card-footer border-0 rounded-0 bg-black p-4">
+    <div class="card-body text-white">
+      <center> © 2023 LiveWire. All Rights Reserved
+        <a href="" class="float-end text-light"> @Contributers</a>
+      </center>
+    </div>
+  </footer>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{% static 'admin/js/script.js' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
