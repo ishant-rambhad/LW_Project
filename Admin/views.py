@@ -95,7 +95,7 @@ def register_employee(request, admin_name):
         if form.is_valid():
             # Create an Employee instance from the form data
             employee = Employee(
-                # empid=form.cleaned_data['empid'],
+                empid=form.cleaned_data['empid'],
                 empname=form.cleaned_data['empname'],
                 empgender=form.cleaned_data['empgender'],
                 empcontactno=form.cleaned_data['empcontactno'],
