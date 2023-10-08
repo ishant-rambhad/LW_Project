@@ -61,7 +61,7 @@ def logout_success(request):
 
 
 @login_required
-def signout(request):
+def signout(request,admin_name):
     # Log the user out using Django's built-in logout function.
     logout(request)
     # Redirect to a page to display a logout success message.
