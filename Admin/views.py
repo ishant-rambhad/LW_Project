@@ -75,18 +75,6 @@ logout_success = LogoutView.as_view(
 
 
 
-# def register_employee(request, admin_name):
-#     if request.method == 'POST':
-#         form = Employee(request.POST)
-#         if form.is_valid():
-#             # Create a new EmployeeMongo instance and save it
-#             employee = form.save(commit=False)
-#             employee.save()
-#             return redirect('employee', admin_name=admin_name)
-#     else:
-#         form = Employee()
-#     return render(request, 'myemployee.html', {'form': form, 'admin_name': admin_name})
-
 
 def register_employee(request, admin_name):
     if request.method == 'POST':
@@ -108,6 +96,8 @@ def register_employee(request, admin_name):
                 empjoiningDate = form.cleaned_data['empjoiningDate'],
             )
             # Save the Employee instance to MongoDB
+            employee = Meta(field1='Value1', field2=42)
+
             employee.save()
             print("12")
 

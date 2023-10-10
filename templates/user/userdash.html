@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="Icon" type="image/x-icon" href="/static/img/user/logo.png">
+    <title>Livewire Nagpur</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Include Chart.js for pie chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include custom CSS -->
+    <style>
+        .flip-card {
+            background: linear-gradient(to right, rgb(178, 214, 232), rgb(109, 161, 207));
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        .btn-primary {
+            background-color: #1b1b1c;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #bf0a03;
+        }
+
+        /* Style for the containers */
+        .container5 {
+            padding: 20px;
+
+        }
+
+        /* Style for the pie chart container */
+        .chart-container5 {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Style for the range bar container */
+        .range-bar-container5 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Style for individual range bars */
+        .range-bar5 {
+            width: 100%;
+            max-width: 400px;
+            margin: 10px;
+            height: 25px;
+        }
+        .body1{
+      background: linear-gradient(#0C7075,#6DA5C0,#0F9690);
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- nav1 -->
+    <nav class="navbar  background-color: #e3f2fd">
+        <div class="container-fluid">
+            <div>
+                <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="container">
+                <a class="navbar-brand float-end" href="#">
+                    <img src="/static/img/user/livewirelogoimpp.png" alt="Bootstrap" width="180px" height="50px">
+                </a>
+
+            </div>
+            <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h6 class="text-dark">....</h6>
+                    <button type="button" class="btn-close btn-close-white justify-content-end"
+                        data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="mx-3">
+                    <center>
+                        <img src="/static/img/user/user (1).png" alt="Bootstrap" class="justify-content-center" width="100px"
+                            height="100px">
+                        <h2 class="text-white"><a class="text-light " href="">{{user_name}}</a></h2>
+
+                    </center>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" aria-current="page" href="#">Badges and achivements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Batches</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Monthly report</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="offcanvas-footer">
+                    <a class="nav-link text-white p-3" href="{% url 'signout' user_name=user_name %}">
+                        Sign Out
+                        <img src="/static/img/user/power.png" alt="Logo" width="30" height="30" class="d-inline-block align-text">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- body -->
+
+<div class="body1">
+    <br>
+    <div class="container mt-5 bg-success-subtle">
+        <div class="row bg-success-subtle">
+            <div class="col-md-12">
+                <h1 id="greeting"></h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card mb-3 bg-success-subtle border-dark">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/static/img/user/team.png" class="card-img p-3" alt="Employee 1">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Students</h5>
+                                <p class="card-text" id="totalStudents">100</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-success-subtle border-dark">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/static/img/user/activest.jpg" class="card-img p-3 " alt="Employee 2">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Active Students</h5>
+                                <p class="card-text" id="activeStudents">78</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-success-subtle border-dark">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/static/img/user/graduates.png" class="card-img p-3" alt="Employee 3">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Batches</h5>
+                                <p class="card-text" id="totalBatches">30</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-3 bg-success-subtle border-dark">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/static/img/user/virtual-class.png" class="card-img p-3" alt="Employee 4">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Active Batches</h5>
+                                <p class="card-text" id="activeBatches">15</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-success-subtle border-dark">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/static/img/user/chart.png" class="card-img p-3" alt="Employee 5">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Workshops</h5>
+                                <p class="card-text" id="totalWorkshops">18</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-success-subtle border-dark">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/static/img/user/dissatisfaction.png" class="card-img p-3" alt="Employee 6">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Reviews</h5>
+                                <p class="card-text" id="totalReviews">46</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container5 m-5 bg-info-subtle">
+        <div class="row">
+            <!-- First container with pie chart -->
+            <div class="col-lg-6">
+                <h2>Subject Distribution</h2>
+                <div class="chart-container5">
+                    <canvas id="myPieChart"></canvas>
+                </div>
+            </div>
+            <!-- Second container with range bars -->
+            <div class="col-lg-6">
+                <h2>Batch Completion Status</h2>
+
+                <div class="range-bar-container5">
+                    <!-- Range Bar 1 (Java batch) -->
+                    <div class="range-bar5 h-10">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 60%;">Java Batch: 60% Complete</div>
+                        </div>
+                    </div>
+                    <!-- Range Bar 2 (FSD batch) -->
+                    <div class="range-bar5">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 40%;">FSD Batch: 40% Complete</div>
+                        </div>
+                    </div>
+                    <!-- Range Bar 3 (MERN batch) -->
+                    <div class="range-bar5">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 80%;">MERN Batch: 80% Complete</div>
+                        </div>
+                    </div>
+                    <!-- Range Bar 4 (MEAN batch) -->
+                    <div class="range-bar5">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 90%;">MEAN Batch: 90% Complete</div>
+                        </div>
+                    </div>
+                    <!-- Range Bar 5 (Java batch) -->
+                    <div class="range-bar5">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 60%;">Java Batch: 60% Complete</div>
+                        </div>
+                    </div>
+                    <!-- Range Bar 6 (DS batch) -->
+                    <div class="range-bar5">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 30%;">DS Batch: 30% Complete</div>
+                        </div>
+                    </div>
+                    <!-- Range Bar 7 (ML batch) -->
+                    <div class="range-bar5">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 40%;">ML Batch: 40% Complete</div>
+                        </div>
+                    </div>
+                    <!-- Range Bar 8 (AI batch) -->
+                    <div class="range-bar5">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 90%;">AI Batch: 90% Complete</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cards -->
+    <div class="container p-0">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-3 mx-5">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h4>Batch One</h4>
+                            <p>Batch Name: XYZ</p>
+                            <p>Batch Timing: 9:00 AM - 11:00 AM</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Status: Completed</p>
+                            <button class="btn btn-primary">View Batch</button>
+                            <button class="btn btn-primary mt-2">Attendance</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-md-3 mx-5">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h4>Batch Two</h4>
+                            <p>Batch Name: XYZ</p>
+                            <p>Batch Timing: 12:00 AM - 1:00 PM</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Status: Completed</p>
+                            <button class="btn btn-primary">View Batch</button>
+                            <button class="btn btn-primary mt-2">Attendance</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-3 mx-5">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h4>Batch Three</h4>
+                            <p>Batch Name: XYZ</p>
+                            <p>Batch Timing: 1:00 PM - 2:00 PM</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Status: Completed</p>
+                            <button class="btn btn-primary">View Batch</button>
+                            <button class="btn btn-primary mt-2">Attendance</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more cards with the same structure as Card 1 here -->
+        </div>
+        <div class="row">
+            <!-- Card 4 -->
+            <div class="col-md-3 mx-5">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h4>Batch Four</h4>
+                            <p>Batch Name: XYZ</p>
+                            <p>Batch Timing: 3:00 PM - 4:00 PM</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Status: Completed</p>
+                            <button class="btn btn-primary">View Batch</button>
+                            <button class="btn btn-primary mt-2">Attendance</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="col-md-3 mx-5">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h4>Batch Five</h4>
+                            <p>Batch Name: XYZ</p>
+                            <p>Batch Timing: 5:00 PM - 6:00 PM</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Status: Completed</p>
+                            <button class="btn btn-primary">View Batch</button>
+                            <button class="btn btn-primary mt-2">Attendance</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="col-md-3 mx-5">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h4>Batch Six</h4>
+                            <p>Batch Name: XYZ</p>
+                            <p>Batch Timing: 7:00 PM - 8:00 PM</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Status: Completed</p>
+                            <button class="btn btn-primary">View Batch</button>
+                            <button class="btn btn-primary mt-2">Attendance</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Card 7 -->
+            <div class="col-md-3 mx-5">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h4>Batch Seven</h4>
+                            <p>Batch Name: XYZ</p>
+                            <p>Batch Timing: 9:00 AM - 11:00 AM</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Status: Completed</p>
+                            <button class="btn btn-primary">View Batch</button>
+                            <button class="btn btn-primary mt-2">Attendance</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="col-md-3 mx-5">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h4>Batch Eight</h4>
+                            <p>Batch Name: XYZ</p>
+                            <p>Batch Timing: 12:00 AM - 1:00 PM</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Status: Completed</p>
+                            <button class="btn btn-primary">View Batch</button>
+                            <button class="btn btn-primary mt-2">Attendance</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="col-md-3 mx-5">
+                <div class="flip-card">
+
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h4>EXTRA BATCH</h4>
+                        </div>
+                        <div class="flip-card-back">
+                            <button class="btn btn-primary">Add Batch</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <!-- JavaScript for pie chart -->
+    <script>
+        var ctx = document.getElementById('myPieChart').getContext('2d');
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['DS', 'AI', 'ML', 'MERN', 'MEAN', 'JAVA'],
+                datasets: [{
+                    data: [15, 20, 25, 10, 10, 20], // You can adjust these values
+                    backgroundColor: ['#FF5733', '#FFC300', '#33FF57', '#33A2FF', '#E433FF', '#FF33A1'],
+                }],
+            },
+        });
+    </script>
+
+
+
+    <!-- Add Bootstrap JS and jQuery here -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const now = new Date();
+        const currentHour = now.getHours();
+        let greeting = '';
+
+        if (currentHour >= 12 && currentHour < 17) {
+            greeting = 'Good Afternoon';
+        } else if (currentHour >= 17) {
+            greeting = 'Good Evening';
+        } else {
+            greeting = 'Good Morning';
+        }
+
+        document.getElementById('greeting').innerText = `${greeting}, {{user_name}}`;
+    </script>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
