@@ -57,10 +57,10 @@ def signout(request,user_name):
     # Log the user out using Django's built-in logout function.
     logout(request)
     # Redirect to a page to display a logout success message.
-    return redirect('logout_success')
+    return redirect('logout_successful')
 
 # You can use the built-in LogoutView for the success message.
-logout_success = LogoutView.as_view(
+logout_successful = LogoutView.as_view(
     template_name='user/logout_success.html',
     next_page='loginuser'  # Redirect to the login page after logout.
 )
