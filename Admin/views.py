@@ -7,9 +7,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LogoutView
-from .forms import EmployeeRegistrationForm
+# from .forms import EmployeeRegistrationForm
 from .forms import Employee  # Import your new form
 # from .models import EmployeeMongo
+from .forms import EmployeeForm
 
 
 
@@ -46,9 +47,23 @@ def Admin_Home(request, admin_name):
 
 
 @login_required
-def Register_admin(request,admin_name):
-    context = {"admin_name": admin_name}  # Create a dictionary with the admin_name variable
+def emp_register(request, admin_name):
+    if request.method == 'POST':
+        form = EmployeeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # You can add a success message or redirect to a different page upon successful registration.
+            return redirect('employee', admin_name=admin_name) # Replace 'success_page' with the name of your success page URL.
+    else:
+        form = EmployeeForm()
+
+    context = {
+        "admin_name" :admin_name,
+        'form': form,
+    }
+    print("3")
     return render(request, 'admin/emp_register.html', context)
+
 
 @login_required
 def Employee(request,admin_name):
@@ -74,42 +89,3 @@ logout_success = LogoutView.as_view(
 )
 
 
-
-
-def register_employee(request, admin_name):
-    if request.method == 'POST':
-        print("4")
-        form = EmployeeRegistrationForm(request.POST)
-        if form.is_valid():
-            # Create an Employee instance from the form data
-            employee = Employee(
-                empid=form.cleaned_data['empid'],
-                empname=form.cleaned_data['empname'],
-                empgender=form.cleaned_data['empgender'],
-                empcontactno=form.cleaned_data['empcontactno'],
-                empemail = form.cleaned_data['empemail'],
-                empaddress = form.cleaned_data['empaddress'],
-                empdob =  form.cleaned_data['empdob'],
-                emppassword =  form.cleaned_data['emppassword'],
-                empdesignation = form.cleaned_data['empdesignation'],
-                emptype =  form.cleaned_data['emptype'],
-                empjoiningDate = form.cleaned_data['empjoiningDate'],
-            )
-            # Save the Employee instance to MongoDB
-            employee = Meta(field1='Value1', field2=42)
-
-            employee.save()
-            print("12")
-
-            # Redirect to a success page or perform other actions
-            return redirect('employee')
-    else:
-        print("2")
-        form = EmployeeRegistrationForm()
-
-    context = {
-        "admin_name" :admin_name,
-        'form': form,
-    }
-    print("3")
-    return render(request, 'admin/emp_register.html', context)

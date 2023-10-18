@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
-from django.db import models  # Import the models module
+from djongo import models  # Import the models module
 from django.utils.translation import gettext_lazy as _
 
 class CustomUser(AbstractUser):
@@ -14,19 +14,20 @@ class CustomUser(AbstractUser):
         related_name='customuser_set'
     )
 
+
+
 class Employee(models.Model):
-    empid = models.CharField(max_length=20)
-    empname = models.CharField(max_length=100)
-    empgender = models.CharField(max_length=10)
+    empid = models.CharField(max_length=255)
+    empname = models.CharField(max_length=255)
+    empgender = models.CharField(max_length=10, choices=[("male", "Male"), ("female", "Female"), ("other", "Other")])
     empcontactno = models.CharField(max_length=15)
     emergencycontact = models.CharField(max_length=15)
-    empemail = models.EmailField(max_length=100)
+    empemail = models.EmailField(max_length=255)
     empaddress = models.TextField()
     empdob = models.DateField()
-    emppassword = models.CharField(max_length=128)
-    empdesignation = models.CharField(max_length=20)
-    emptype = models.CharField(max_length=20)
+    emppassword1 = models.CharField(max_length=255)
+    emppassword2 = models.CharField(max_length=255)
+    empdesignation = models.CharField(max_length=255, choices=[("admin", "Admin"), ("user", "User")])
+    emptype = models.CharField(max_length=255, choices=[("part-time", "Part Time"), ("full-time", "Full Time"), ("freelancer", "Freelancer")])
     empjoiningDate = models.DateField()
-
-    class Meta:
-        db_table = 'ishantcollection'
+    empgridcheck1 = models.BooleanField(default=False)

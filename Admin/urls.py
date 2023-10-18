@@ -10,7 +10,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin_login/', views.loginadmin, name='loginadmin'),
     path('<str:admin_name>/home/', login_required(views.Admin_Home), name='admin_home'),
-    path('<str:admin_name>/registration/',  login_required(views.register_employee), name='Register_admin'),
+    path('<str:admin_name>/registration/',  login_required(views.emp_register), name='Register_admin'),
     path('<str:admin_name>/myemployee/', login_required(views.Employee), name='employee'),
     path('<str:admin_name>/signout/', views.signout, name='signout'),
     path('logout_success/', views.logout_success, name='logout_success'),

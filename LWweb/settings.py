@@ -75,18 +75,29 @@ WSGI_APPLICATION = "LWweb.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+#
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'ishantDB',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'localhost',  # MongoDB host
-            'port': 27017,        # MongoDB port
+        'NAME': 'Lwweb',
+
         }
     }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'ENFORCE_SCHEMA': True,
+#         'NAME': 'LWDataBase',
+#         'CLIENT': {
+#             'host': 'mongodb+srv://Yasssh:Yasssh2002@lwdatabase.2vgqww4.mongodb.net/',
+#             'port': 27017,  # Default MongoDB port
+#             'username': 'Yasssh',
+#             'password': 'Yasssh2002',
+#             'authSource': 'admin',
+#         }
+#     }
+# }
+
 
 
 

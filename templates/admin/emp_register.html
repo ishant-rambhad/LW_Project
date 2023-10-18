@@ -19,7 +19,7 @@
         <input type="file" class="form-control w-75 mt-5" id="inputGroupFile01">
         <div class="card-body text-start">
 
- <form method="post" action="{% url 'employee' admin_name=admin_name %}">
+ <form method="post" >
      {% csrf_token %}
     <div class="form-group mt-4">
         <label for="empid">ID</label>

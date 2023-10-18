@@ -10,7 +10,7 @@ urlpatterns = [
     path('<str:user_name>/home/', login_required(views.User_Home), name='User_Home'),
     path('<str:user_name>/addbatch/', login_required(views.User_addbatch), name='User_addbatch'),
     path('<str:user_name>/viewbatch/', login_required(views.User_viewbatch), name='User_viewbatch'),
-    path('<str:user_name>/signout/', views.signout, name='signout'),
+    path('<str:user_name>/signout/', views.signout, name='signou'),
     path('logout_success/', views.logout_successful, name='logout_successful'),
 
 ]
