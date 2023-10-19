@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import make_password
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 
@@ -11,6 +12,7 @@ from django.contrib.auth.views import LogoutView
 from .forms import Employee  # Import your new form
 # from .models import EmployeeMongo
 from .forms import EmployeeForm
+from django.contrib import messages
 
 
 
@@ -51,19 +53,32 @@ def emp_register(request, admin_name):
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
         if form.is_valid():
-            form.save()
-            # You can add a success message or redirect to a different page upon successful registration.
-            return redirect('employee', admin_name=admin_name) # Replace 'success_page' with the name of your success page URL.
+            # Check if the entered password and password confirmation match
+            password1 = form.cleaned_data['emppassword1']
+            password2 = form.cleaned_data['emppassword2']
+            if password1 == password2:
+                # Passwords match, proceed to save
+                employee = form.save(commit=False)
+                # Hash the password using make_password
+                employee.emppassword1 = make_password(password1)
+                employee.emppassword2 = make_password(password2)
+                employee.save()
+                # You can add a success message or redirect to a different page upon successful registration.
+                messages.success(request, 'Employee registration successful!')
+                return redirect('employee', admin_name=admin_name) # Replace 'success_page' with the name of your success page URL.
+            else:
+                # Passwords do not match, display an error message
+                messages.error(request, 'Passwords do not match. Please try again.')
+
     else:
         form = EmployeeForm()
 
     context = {
-        "admin_name" :admin_name,
+        "admin_name" : admin_name,
         'form': form,
     }
     print("3")
     return render(request, 'admin/emp_register.html', context)
-
 
 @login_required
 def Employee(request,admin_name):
