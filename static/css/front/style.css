@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Poppins:ital,wght@0,400;1,700&display=swap');
+*,body,html{ padding: 0; margin: 0; font-family:'Poppins', sans-serif; font-size: 16px;}
+.container{ width: 1170px; margin: 0 auto;}
+.flex-aligner {display: flex;flex-direction: row;justify-content: space-between;}
+.flex-wrap{ flex-wrap: wrap;}
+h1,h2,h4{ font-family:  'Montserrat', sans-serif;;}
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000000; cursor: pointer;
+}
+
+/*------ header  --------*/
+.top-header,.copyrigth{background: rgb(35,11,51);
+    background: linear-gradient(108deg, rgba(35,11,51,1) 39%, rgba(25,10,138,1) 100%, rgba(253,29,29,1) 100%);
+padding: 10px 0; color: #fff;}
+.top-header a{ color: #fff; margin-right: 20px;}
+.top-header a i{ margin-right: 5px;}
+.header,.footer {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite; padding: 10px 0;
+	
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.logo{ width: 30%;}
+
+.navbar li {
+    display: inline-block;
+    margin: 20px 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; 
+}
+.navbar li a{ color: #fff; font-weight: 500;}
+.logo-img {
+    width: 50%; position: relative ; right: 10px;
+}
+.navbar li:last-child,.top-header a{ margin: 5px;}
+
+/*--- slider ---*/
+.slider-main{ position: relative;}
+.bg-overlay{ position: absolute; width: 100%; height: 100%;}
+.nivo-caption h1{ font-size: 50px; text-align: center; margin:50px 0 15px 0; font-family:  'Montserrat', sans-serif;} 
+.nivo-caption p{line-height: 30px; font-size: 18px;}
+.nivo-caption button,.btn{  padding: 15px 15px; border: 3px solid #000; margin: 30px 0; background-color: #2F6BC1;
+    color: #fff;font-size: 16px;text-transform: uppercase; cursor: pointer;}
+.nivo-caption button:hover,.btn:hover{ background-color: #23a6d5;}
+.nivo-caption button i,.btn i{ margin-left: 10px;}
+.theme-default .nivo-controlNav{ position: absolute; bottom: 15px; right: 0;left: 0; z-index: 7;}
+.nivoSlider{ margin-bottom:0 !important;}
+/*---- section1-------*/
+.section{ padding: 80px 0;}
+.section1{ padding: 80px 0 120px 0;}
+.section1,.section-course { position: relative; background-color: #eaeaea;}
+.section-content{ position: relative; top: 80px; width: 60%; }
+.partician-img{ position: absolute; bottom: -6%; left: 151px; z-index: 1; width: 1210px;}
+.section-title{ width: 32%;}
+.section-title h4{ color: #2F6BC1; font-size: 18px;}
+.section-title h4 i,.section-tilte i{ margin-right: 10px;}
+.section-title h2{ font-size: 30px; margin: 10px 0 30px 0;position: relative;}
+.section-title h2::before{ position: absolute; content: ""; width: 40%; height: 2px ;bottom: -11px; background: #000;}
+.section-title p{ margin-bottom: 20px;}
+.col{ width: 75%; height: 220px;   padding: 20px; background-color: #3a7bd5;
+     background-image: linear-gradient(to right,#00d2ff,#3a7bd5);
+    text-align: center; border-radius: 10px;}
+.col .btn{ padding: 10px; margin: 30px 0 15px 0;} 
+.col .btn1{ margin: 10px 0 0 0;}
+.col-img{ width: 50%; margin: 0 auto;}  
+.col h4{ margin: 10px 0; padding-top: 10px;}  
+.col .nm{ margin: 0;}
+.owl-dots{ display: none;} 
+.owl-prev,.owl-next{ background-color: #7541df !important; width: 30px !important; color: #fff !important;}
+/*----------section-about -----*/
+.section-about{ background-image: url("https://cdn.pixabay.com/photo/2017/06/13/10/22/board-2398309_1280.jpg");
+background-repeat: no-repeat; background-size: cover; position: relative; } 
+ .bg-overlay{ background-color: #d0d8ff;; width: 100%; height: 100%; position: absolute; left: 0; top: 0;
+     opacity: 0.8; z-index: 1}  
+.section-about .section-img,.section-about .section-cont{position: relative; z-index: 2;}
+.section-img-team,.section-cont-abt{ width: 50%;}
+.section-cont-abt .section-title{ width: 100%; text-align: justify;} 
+.section-img-team h4{ font-size: 30px; text-align: center; margin: 0px 0 30px 0; position: relative;}
+.section-img-team h4::before{position: absolute; content: ""; width: 40%; bottom: -11px; height: 2px;
+background: #000;}
+/*------------------- section-course-----------------*/
+
+.section-title-center{ text-align: center; margin: 0 auto 30px auto; width: 40%;}
+.section-title-center h2::before,.section-title-center h2::before{ 
+    left: 30%; bottom: -13px;}
+.course-box{ width: 30%; text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin: 30px 0;
+border-radius: 10px; overflow: hidden;}
+.course-box h4{ background-color: #f5f9ff; background-image: linear-gradient(to bottom,#3a7bd5,#3a6073); 
+    padding: 10px 0; color: #fff;}
+.course-box .btn{ padding: 5px 10px; margin: 20px 0 30px 0;}
+.course-box p{ margin-top: 20px;}
+.c-img{overflow: hidden;}
+.c-img img{transform: scale(1);transition: all 0.5s ease-in-out;}
+.course-box:hover .c-img img{ transform: scale(1.3);}
+.course-box:hover{ box-shadow: 4px 4px 16px black; transition: all 0.5s ease-in-out;}
+.course-box:hover.course-box .btn{ background-color:#190a8a ; transition: all 0.5s ease-in-out;}
+.course-box:hover.course-box h4{ background-image: linear-gradient(to bottom,#190a8a,#3a6073);
+    transition: all 0.5s ease-in-out;}
+
+/*------------------- section-choose-----------------*/
+.section-choose{ background-image: url("https://img.freepik.com/premium-vector/light-blue-circuit-board-chip-technology-background_88343-3396.jpg"); background-repeat: no-repeat;
+background-size: cover; background-position: top;}
+.choose-box{ width: 240px; height: 240px; border-radius: 50%; background-color: #00d2ff;
+text-align: center; position: relative; margin: 30px 0;}
+.img-choose{ width: 25%; margin:45px auto 15px auto;}
+.choose-box h4{ padding: 0 30px; text-transform: capitalize;}
+.spinner{ width:200px; height: 200px; border-radius: 50%; position: absolute;border: 20px solid #230b33;
+    border-right-color:#190a8a;border-bottom-color:#190a8a; transition: all 0.8s ease-in-out;}
+.choose-box:hover .spinner{ transform: rotate(180deg);}
+
+/*----- section-team ----*/
+.team-box{width: 23%; position: relative; margin: 30px 0 50px 0; overflow: hidden;}
+.overflow-team{ position: absolute; width: 100%; height: 0%; background-color: rgba(0,0,0,0.2);
+top: 0; transition: 0.5s ease-in-out;}
+.team-box:hover .overflow-team{ height: 100%;}
+.team-content{ position: absolute; background: #ffffff; text-align: center;width: 80% 
+    ;margin: 0 27px;padding: 15px 0; bottom: -12px; z-index: 2;}
+.team-content h4{ color: #00d2ff;}
+.team-box i{padding:13px 15px; color: #fff; font-size: 17px; transition: all 0.5s ease-in-out;}
+.facebook{ background-color: #3b5999; border: 2px solid #3b5999;}
+.twitter{background-color: #007bff;  border: 2px solid #007bff; }
+.linkedin{background-color: #cd201f;  border: 2px solid #cd201f;}
+.team-box i:hover{ background-color: #fff; color:#3b5999 ;}
+.facebook:hover{ color:#3b5999 ;}
+.twitter:hover{ color: #007bff;}
+.linkedin:hover{ color: #cd201f;}
+.social-i{ position: absolute; left: 0; right: 0; top: 80%; display: flex; align-items: center; justify-content: center;
+visibility: hidden; opacity: 0;  z-index: 1; transition: all 0.5s ease-in-out; transform: translateY(-50%);}
+.social-i a{ margin: 0 5px;}
+.team-box:hover .social-i{ visibility: visible; opacity: 1; top: 50%;}
+.team-img img{ transform: scale(1);transition: all 0.5s ease-in-out;}
+.team-box:hover .team-img img{ transform: scale(1.2); }
+
+/*-------------- section-partner ------------*/
+.section-partner{ background-image: url("https://static.vecteezy.com/system/resources/previews/005/048/622/non_2x/abstract-background-banner-with-color-creative-digital-light-modern-free-vector.jpg"); 
+background-repeat: no-repeat; background-size: cover; position: relative; padding: 80px 0 160px 0;}
+.section-partner .bg-overlay{ background-color: rgb(255 255 255 / 100%)}
+.flex-partner{ width: 48%;}
+.section-partner .container{ position: relative; z-index: 2;}
+.section-partner .section-title { width: 100%;}
+.section-partner h2,.section-partner span{ font-size: 40px;}
+.partner-img1{ transform: scaleX(-1);}
+.partner-logo{ width: 48%; margin: 48px 0;}
+.partner-box{ width: 25%; position: relative; margin: 20px 5px; box-shadow: 1px 1px 12px black;
+     padding: 15px; transition: all 0.5s ease-in-out;}
+.m-img{ margin: 15px 0 0 0;}
+.partner-box img{filter:grayscale(11); transition: all 0.5s ease-in-out;}
+.partner-box:hover.partner-box img{filter:grayscale(0); transform: scale(1.1);}
+
+/*----------- counter ------------*/
+.counter-wrap{background-image: url("https://img.freepik.com/premium-vector/abstract-light-blue-halftone-dotted-background_567288-965.jpg"); background-repeat: no-repeat;
+background-size: cover; position: relative;  color: #fff; border-radius:30px ; z-index: 2;
+position: relative; bottom: 130px;}
+.section-counter .bg-overlay{ background-color: rgba(0, 123, 255,0.8);z-index: 1;
+border-radius: 30px;}
+.counter-box{ position: relative; z-index: 2; padding: 70px 50px; text-align: center;}
+.counter-box h1,.counter-box h1 span{ font-size: 50px; margin-bottom: 10px;}
+.counter-box h4 span{ font-weight: 400;}
+
+/*-------------- ingfrastructure -----------*/
+.section-infrastructure{ padding-top: 0}
+.infra-box{ width: 22%; margin-top: 30px;}
+
+/*------------ footer ------------*/
+.footer{ padding:80px 0 0 0}
+.footer-wrap{ position: relative; margin-bottom: 60px;  margin-bottom: 60px;    border-radius: 20px; padding: 40px;
+box-shadow: 0px 0px 10px #fafafa;}
+.footer-wrap .bg-overlay{ background-color: rgba(0, 123, 255,0.6); border-radius: 20px;}
+.footer .flex-aligner{ position: relative; z-index: 2;}
+.footer-box{ width: 23%; color: #fff;}
+.footer-box p{ margin: 10px 0;}
+.footer-logo{ position: relative; left: -13px;}
+.footer .social-icon a{ width: 40px;height: 40px; border-radius: 50%; background-color: #000000;
+color: #fff; display: inline-block;text-align: center; margin-top: 12px; 
+transition: all 0.5s ease-in-out;}
+.footer .social-icon a i{padding: 12px 0 0 0;}
+.footer .social-icon a:hover{color: #000; background: #01d3fb; box-shadow: 0 0 5px #007bff;
+    text-shadow: 0 0 5px #007bff;}
+.footer-box h3{ margin: 15px 0; font-size: 20px;}
+.footer-box a{ color: #fff;}
+.footer-box li,.footer-box a{ margin: 10px 0; }
+.footer-box li i{ margin-right: 5px;}
+.footer-box span{ color: #000; margin-right: 5px;}
+.footer-box3 a{margin: 5px 0; display: inline-block;}

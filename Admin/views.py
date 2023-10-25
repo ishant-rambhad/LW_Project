@@ -13,6 +13,8 @@ from .forms import Employee  # Import your new form
 # from .models import EmployeeMongo
 from .forms import EmployeeForm
 from django.contrib import messages
+from django.contrib.auth import get_user_model  # Import the custom user model
+
 
 
 
@@ -25,7 +27,9 @@ def loginadmin(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
+        print(username,password)
         user = authenticate(request, username=username, password=password)
+        print(user)
         context={
             "admin_name": username
         }
@@ -79,6 +83,47 @@ def emp_register(request, admin_name):
     }
     print("3")
     return render(request, 'admin/emp_register.html', context)
+
+
+#
+# @login_required
+# def emp_register(request, admin_name):
+#     if request.method == 'POST':
+#         form = EmployeeForm(request.POST)
+#         if form.is_valid():
+#             designation = form.cleaned_data['empdesignation']
+#
+#             if designation == 'admin':
+#                 # Save data in the custom user model (AdminUser)
+#                 user_model = get_user_model()
+#                 user = user_model.objects.create_user(
+#                     username=form.cleaned_data['empemail'],
+#                     password=form.cleaned_data['emppassword1'],
+#                     # Add other fields here
+#                 )
+#                 user.empid = form.cleaned_data['empid']
+#                 # Add other fields specific to admin users
+#
+#             else:
+#                 # Save data in your custom model for other Designations
+#                 employee = form.save(commit=False)
+#                 employee.emppassword1 = make_password(form.cleaned_data['emppassword1'])
+#                 # Set other fields specific to non-admin users
+#                 employee.save()
+#
+#             messages.success(request, 'Employee registration successful!')
+#             return redirect('employee', admin_name=admin_name)
+#
+#     else:
+#         form = EmployeeForm()
+#
+#     context = {
+#         "admin_name": admin_name,
+#         'form': form,
+#     }
+#     return render(request, 'admin/emp_register.html', context)
+
+
 
 @login_required
 def Employee(request,admin_name):
