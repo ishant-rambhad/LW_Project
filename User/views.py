@@ -4,14 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import logout
-
-
-
-
-
-
 # Create your views here.
-
 
 
 def loginuser(request):
@@ -50,7 +43,7 @@ def User_addbatch(request, user_name):
 @login_required
 def User_viewbatch(request, user_name):
     context = {"user_name": user_name}
-    return render(request, 'user/uiewbatch.html', context)
+    return render(request, 'user/viewbatch.html', context)
 
 @login_required
 def signout(request,user_name):
